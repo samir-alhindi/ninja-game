@@ -1,0 +1,338 @@
+[gd_scene format=3 uid="uid://brhckb1lkjt2d"]
+
+[ext_resource type="Script" uid="uid://h2hn8dpdkqu2" path="res://player/player.gd" id="1_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://0wqo08ppgyux" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Walk.png" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://117th8lgbcdw" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://dualqpud1jpvv" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png" id="2_yw30f"]
+[ext_resource type="Texture2D" uid="uid://618ncu12hrge" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/SpriteInHand.png" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://tbrpd4y1sstn" path="res://components/damaging/damaging_component.tscn" id="6_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://dvk8ofnxjkd0q" path="res://components/damageable/damageable_component.tscn" id="7_boad6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
+atlas = ExtResource("2_yw30f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7qer"]
+atlas = ExtResource("2_yw30f")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4c7l"]
+atlas = ExtResource("2_yw30f")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7c3f"]
+atlas = ExtResource("2_yw30f")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
+atlas = ExtResource("1_rkbax")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65viv"]
+atlas = ExtResource("1_rkbax")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35mf"]
+atlas = ExtResource("1_rkbax")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
+atlas = ExtResource("1_rkbax")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oul6g"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgyib"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1dw6"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yllr7"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("1_oul6g")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6k8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjvpn")
+}],
+"loop": true,
+"name": &"attack down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7qer")
+}],
+"loop": true,
+"name": &"attack left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4c7l")
+}],
+"loop": true,
+"name": &"attack right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7c3f")
+}],
+"loop": true,
+"name": &"attack up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqiix")
+}],
+"loop": true,
+"name": &"idle down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65viv")
+}],
+"loop": true,
+"name": &"idle left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35mf")
+}],
+"loop": true,
+"name": &"idle right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7oew")
+}],
+"loop": true,
+"name": &"idle up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebec5")
+}],
+"loop": true,
+"name": &"walk down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oul6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6k8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boad6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgyib")
+}],
+"loop": true,
+"name": &"walk left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkbax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1dw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw30f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkh3")
+}],
+"loop": true,
+"name": &"walk right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yllr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wodsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32hag")
+}],
+"loop": true,
+"name": &"walk up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
+radius = 7.071068
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(7, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boad6"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D" unique_id=279543829]
+motion_mode = 1
+script = ExtResource("1_g1dw6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93024993]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_g6k8r")
+animation = &"attack up"
+autoplay = "idle down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=181110495]
+visible = false
+shape = SubResource("CircleShape2D_rkbax")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=181001614]
+
+[node name="Weapons" type="Node2D" parent="." unique_id=365599870]
+unique_name_in_owner = true
+
+[node name="WeaponDown" parent="Weapons" unique_id=533439816 instance=ExtResource("6_g6k8r")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-2, 13)
+
+[node name="CollisionShape2D" parent="Weapons/WeaponDown" index="0" unique_id=965935135]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_g6k8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponDown" unique_id=1474799693]
+texture = ExtResource("5_qjkh3")
+
+[node name="WeaponRight" parent="Weapons" unique_id=283930940 instance=ExtResource("6_g6k8r")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(13, 4)
+rotation = 4.712389
+
+[node name="CollisionShape2D" parent="Weapons/WeaponRight" index="0" unique_id=965935135]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_g6k8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponRight" unique_id=256773293]
+texture = ExtResource("5_qjkh3")
+
+[node name="WeaponLeft" parent="Weapons" unique_id=858595310 instance=ExtResource("6_g6k8r")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-13, 4)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" parent="Weapons/WeaponLeft" index="0" unique_id=965935135]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_g6k8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponLeft" unique_id=1633657953]
+texture = ExtResource("5_qjkh3")
+
+[node name="WeaponUp" parent="Weapons" unique_id=1856769002 instance=ExtResource("6_g6k8r")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-3, -13)
+rotation = 3.1415927
+
+[node name="CollisionShape2D" parent="Weapons/WeaponUp" index="0" unique_id=965935135]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_g6k8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponUp" unique_id=657453260]
+texture = ExtResource("5_qjkh3")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=336858966]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="DamageableComponent" parent="." unique_id=1429838472 instance=ExtResource("7_boad6")]
+
+[node name="CollisionShape2D" parent="DamageableComponent" index="0" unique_id=1061504655]
+shape = SubResource("CircleShape2D_boad6")
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="took_damage" from="DamageableComponent" to="." method="_on_damageable_component_took_damage"]
+
+[editable path="Weapons/WeaponDown"]
+[editable path="Weapons/WeaponRight"]
+[editable path="Weapons/WeaponLeft"]
+[editable path="Weapons/WeaponUp"]
+[editable path="DamageableComponent"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6rhy0uwkrb0l"
+path="res://.godot/imported/Slash5.wav-a8f0749583442e02b794806036d5cf8a.sample"
+
+[deps]
+
+source_file="res://Ninja Adventure - Asset Pack/Audio/Sounds/Whoosh & Slash/Slash5.wav"
+dest_files=["res://.godot/imported/Slash5.wav-a8f0749583442e02b794806036d5cf8a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

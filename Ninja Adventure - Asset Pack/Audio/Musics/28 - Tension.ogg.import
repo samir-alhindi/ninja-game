@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cowa7frb26x7l"
+path="res://.godot/imported/28 - Tension.ogg-b16804b161a8c7db3968dabe71922107.oggvorbisstr"
+
+[deps]
+
+source_file="res://Ninja Adventure - Asset Pack/Audio/Musics/28 - Tension.ogg"
+dest_files=["res://.godot/imported/28 - Tension.ogg-b16804b161a8c7db3968dabe71922107.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://caqo0s3fvqtw3"
+path="res://.godot/imported/18 - Aquatic.ogg-7992ea236638eb1d3fa89fbded8ecc31.oggvorbisstr"
+
+[deps]
+
+source_file="res://Ninja Adventure - Asset Pack/Audio/Musics/18 - Aquatic.ogg"
+dest_files=["res://.godot/imported/18 - Aquatic.ogg-7992ea236638eb1d3fa89fbded8ecc31.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

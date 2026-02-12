@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6kp3ji3dda6y"
+path="res://.godot/imported/Accept6.wav-1dbd698d83fd17da8b10de354821e852.sample"
+
+[deps]
+
+source_file="res://Ninja Adventure - Asset Pack/Audio/Sounds/Menu/Accept6.wav"
+dest_files=["res://.godot/imported/Accept6.wav-1dbd698d83fd17da8b10de354821e852.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
