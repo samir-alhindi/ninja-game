@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buhy1sb72vvaj"
+path="res://.godot/imported/small enemy hit.wav-84651db1c2a76a8e7f18f73ea6bbc702.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/small enemy hit.wav"
+dest_files=["res://.godot/imported/small enemy hit.wav-84651db1c2a76a8e7f18f73ea6bbc702.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

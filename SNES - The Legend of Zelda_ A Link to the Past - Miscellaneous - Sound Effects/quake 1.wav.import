@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bron1b6bgfqxo"
+path="res://.godot/imported/quake 1.wav-197b57d4e55367451ac3a0d9b15d663b.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/quake 1.wav"
+dest_files=["res://.godot/imported/quake 1.wav-197b57d4e55367451ac3a0d9b15d663b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

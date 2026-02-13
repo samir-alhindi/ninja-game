@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ql8e0rroyfj1"
+path="res://.godot/imported/stairs down 1.wav-87e9c532758c41a2eed7927be203adb6.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/stairs down 1.wav"
+dest_files=["res://.godot/imported/stairs down 1.wav-87e9c532758c41a2eed7927be203adb6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

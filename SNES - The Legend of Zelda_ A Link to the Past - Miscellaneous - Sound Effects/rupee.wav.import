@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhk27r6kdbgio"
+path="res://.godot/imported/rupee.wav-ae0a73262d153733645346601e87490d.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/rupee.wav"
+dest_files=["res://.godot/imported/rupee.wav-ae0a73262d153733645346601e87490d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

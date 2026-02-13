@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jy4m1d3nhaod"
+path="res://.godot/imported/ambient rumbling.wav-d48cf617ea03b9689168a91658770089.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/ambient rumbling.wav"
+dest_files=["res://.godot/imported/ambient rumbling.wav-d48cf617ea03b9689168a91658770089.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

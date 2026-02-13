@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dvk8ofnxjkd0q"]
+
+[ext_resource type="Script" uid="uid://b7tre3efxqlsc" path="res://components/damage/damage_component.gd" id="1_t37o0"]
+
+[node name="DamageComponent" type="Area2D" unique_id=1429838472]
+script = ExtResource("1_t37o0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1061504655]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpn2fd4dwviy4"
+path="res://.godot/imported/flap.wav-c09edbf9b07e2d1a3e8b5d2b321823b2.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/flap.wav"
+dest_files=["res://.godot/imported/flap.wav-c09edbf9b07e2d1a3e8b5d2b321823b2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

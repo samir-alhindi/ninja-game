@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwwfehdtsa7n1"
+path="res://.godot/imported/bombable wall.wav-79c2b51b8519cd0ee659e82bccaefc77.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/bombable wall.wav"
+dest_files=["res://.godot/imported/bombable wall.wav-79c2b51b8519cd0ee659e82bccaefc77.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

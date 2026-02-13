@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cod8wb7skuq1w"
+path="res://.godot/imported/magic meter 2.wav-a42ec0632bcbc34fe6bd913b54a2249c.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/magic meter 2.wav"
+dest_files=["res://.godot/imported/magic meter 2.wav-a42ec0632bcbc34fe6bd913b54a2249c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

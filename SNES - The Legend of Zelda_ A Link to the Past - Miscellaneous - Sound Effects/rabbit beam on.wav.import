@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmqqgob2j43j1"
+path="res://.godot/imported/rabbit beam on.wav-eaec10a338d78f079d104bd862b36900.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/rabbit beam on.wav"
+dest_files=["res://.godot/imported/rabbit beam on.wav-eaec10a338d78f079d104bd862b36900.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

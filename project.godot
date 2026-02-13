@@ -57,6 +57,13 @@ attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+2d_physics/layer_4="interactable"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -67,4 +74,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-2d/snap/snap_2d_vertices_to_pixel=true
+2d/snap/snap_2d_transforms_to_pixel=true

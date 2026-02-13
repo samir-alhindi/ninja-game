@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://117th8lgbcdw" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dualqpud1jpvv" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png" id="2_yw30f"]
 [ext_resource type="Texture2D" uid="uid://618ncu12hrge" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/SpriteInHand.png" id="5_qjkh3"]
-[ext_resource type="PackedScene" uid="uid://tbrpd4y1sstn" path="res://components/damaging/damaging_component.tscn" id="6_g6k8r"]
-[ext_resource type="PackedScene" uid="uid://dvk8ofnxjkd0q" path="res://components/damageable/damageable_component.tscn" id="7_boad6"]
+[ext_resource type="PackedScene" uid="uid://dvk8ofnxjkd0q" path="res://components/damage/damage_component.tscn" id="7_boad6"]
+[ext_resource type="AudioStream" uid="uid://d2bs87bpy7311" path="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/fighter sword 1.wav" id="7_rgyib"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
 atlas = ExtResource("2_yw30f")
@@ -240,26 +240,27 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
-radius = 7.071068
+radius = 5.0990195
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
-size = Vector2(7, 14)
+size = Vector2(11, 17)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_boad6"]
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D" unique_id=279543829]
+collision_layer = 2
+collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_g1dw6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93024993]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"attack up"
+animation = &"attack left"
 autoplay = "idle down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=181110495]
-visible = false
 shape = SubResource("CircleShape2D_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=181001614]
@@ -267,72 +268,91 @@ shape = SubResource("CircleShape2D_rkbax")
 [node name="Weapons" type="Node2D" parent="." unique_id=365599870]
 unique_name_in_owner = true
 
-[node name="WeaponDown" parent="Weapons" unique_id=533439816 instance=ExtResource("6_g6k8r")]
+[node name="WeaponDown" type="Area2D" parent="Weapons" unique_id=768966297]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-2, 13)
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" parent="Weapons/WeaponDown" index="0" unique_id=965935135]
-position = Vector2(-0.5, 3)
-shape = SubResource("RectangleShape2D_g6k8r")
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponDown" unique_id=1474799693]
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponDown" unique_id=1118240298]
 texture = ExtResource("5_qjkh3")
 
-[node name="WeaponRight" parent="Weapons" unique_id=283930940 instance=ExtResource("6_g6k8r")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponDown" unique_id=1937617385]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
+
+[node name="WeaponRight" type="Area2D" parent="Weapons" unique_id=89894736]
 unique_name_in_owner = true
 visible = false
 position = Vector2(13, 4)
 rotation = 4.712389
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" parent="Weapons/WeaponRight" index="0" unique_id=965935135]
-position = Vector2(-0.5, 3)
-shape = SubResource("RectangleShape2D_g6k8r")
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponRight" unique_id=256773293]
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponRight" unique_id=1616446068]
 texture = ExtResource("5_qjkh3")
 
-[node name="WeaponLeft" parent="Weapons" unique_id=858595310 instance=ExtResource("6_g6k8r")]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-13, 4)
-rotation = 1.5707964
-
-[node name="CollisionShape2D" parent="Weapons/WeaponLeft" index="0" unique_id=965935135]
-position = Vector2(-0.5, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponRight" unique_id=887179253]
+position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponLeft" unique_id=1633657953]
-texture = ExtResource("5_qjkh3")
-
-[node name="WeaponUp" parent="Weapons" unique_id=1856769002 instance=ExtResource("6_g6k8r")]
+[node name="WeaponUp" type="Area2D" parent="Weapons" unique_id=1218808045]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-3, -13)
 rotation = 3.1415927
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" parent="Weapons/WeaponUp" index="0" unique_id=965935135]
-position = Vector2(-0.5, 3)
-shape = SubResource("RectangleShape2D_g6k8r")
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponUp" unique_id=657453260]
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponUp" unique_id=874375486]
 texture = ExtResource("5_qjkh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponUp" unique_id=74706595]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
+
+[node name="WeaponLeft" type="Area2D" parent="Weapons" unique_id=1317374353]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-13, 4)
+rotation = 1.5707964
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponLeft" unique_id=1135931854]
+texture = ExtResource("5_qjkh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponLeft" unique_id=2072894096]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=336858966]
 unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
-[node name="DamageableComponent" parent="." unique_id=1429838472 instance=ExtResource("7_boad6")]
+[node name="DamageComponent" parent="." unique_id=1429838472 instance=ExtResource("7_boad6")]
+collision_layer = 2
+collision_mask = 0
 
-[node name="CollisionShape2D" parent="DamageableComponent" index="0" unique_id=1061504655]
+[node name="CollisionShape2D" parent="DamageComponent" index="0" unique_id=1061504655]
 shape = SubResource("CircleShape2D_boad6")
+debug_color = Color(0.6783122, 0.5051648, 5.7756904e-07, 0.41960785)
 
+[node name="WeaponSound" type="AudioStreamPlayer" parent="." unique_id=1759539607]
+unique_name_in_owner = true
+stream = ExtResource("7_rgyib")
+
+[connection signal="area_entered" from="Weapons/WeaponDown" to="." method="_on_weapon_area_entered"]
+[connection signal="area_entered" from="Weapons/WeaponRight" to="." method="_on_weapon_area_entered"]
+[connection signal="area_entered" from="Weapons/WeaponUp" to="." method="_on_weapon_area_entered"]
+[connection signal="area_entered" from="Weapons/WeaponLeft" to="." method="_on_weapon_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="took_damage" from="DamageableComponent" to="." method="_on_damageable_component_took_damage"]
+[connection signal="took_damage" from="DamageComponent" to="." method="_on_damageable_component_took_damage"]
 
-[editable path="Weapons/WeaponDown"]
-[editable path="Weapons/WeaponRight"]
-[editable path="Weapons/WeaponLeft"]
-[editable path="Weapons/WeaponUp"]
-[editable path="DamageableComponent"]
+[editable path="DamageComponent"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cayigjsxtj5xn"
+path="res://.godot/imported/wallet 1.wav-72fea3802cb341abf002e1813674f071.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/wallet 1.wav"
+dest_files=["res://.godot/imported/wallet 1.wav-72fea3802cb341abf002e1813674f071.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

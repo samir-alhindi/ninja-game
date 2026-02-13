@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://eq00otqnti1x"]
+
+[ext_resource type="Script" uid="uid://c06ydd7qxybl0" path="res://components/knockback/knockback_component.gd" id="1_rslr4"]
+
+[node name="KnockbackComponent" type="Area2D" unique_id=1500406809]
+script = ExtResource("1_rslr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749381845]

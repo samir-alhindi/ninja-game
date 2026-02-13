@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8saoed41me56"
+path="res://.godot/imported/magic powder 1.wav-93ed6c3ad7b30698c43cb74c6aa1e3fc.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/magic powder 1.wav"
+dest_files=["res://.godot/imported/magic powder 1.wav-93ed6c3ad7b30698c43cb74c6aa1e3fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

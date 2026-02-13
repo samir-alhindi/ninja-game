@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var attack_timer: Timer = %AttackTimer
+@onready var weapon_sound: AudioStreamPlayer = %WeaponSound
 
 @onready var weapon_down: Area2D = %WeaponDown
 @onready var weapon_right: Area2D = %WeaponRight
@@ -10,18 +11,43 @@ class_name Player extends CharacterBody2D
 
 @export var movement_speed: int = 100
 @export var attack_duration := 0.5
+@export var health: int = 3
+@export var strength: int = 1
 
-enum Direction {LEFT, RIGHT, UP, DOWN}
+class Direction:
+	
+	enum Directions {LEFT, RIGHT, UP, DOWN}
+	var direction: Directions
+	var vector: Vector2
+	var string: String
+	var current_weapon: Area2D
+	
+	func _init(direction: Directions, player: Player) -> void:
+		self.direction = direction
+		match direction:
+			Directions.LEFT:
+				vector = Vector2.LEFT
+				string = "left"
+				player.current_weapon = player.weapon_left
+			Directions.RIGHT:
+				vector = Vector2.RIGHT
+				string = "right"
+				player.current_weapon = player.weapon_right
+			Directions.UP:
+				vector = Vector2.UP
+				string = "up"
+				player.current_weapon = player.weapon_up
+			Directions.DOWN:
+				vector = Vector2.DOWN
+				string = "down"
+				player.current_weapon = player.weapon_down
 
-var last_direction: Direction = Direction.DOWN
-var directions: Dictionary[Direction, String] = {
-	Direction.LEFT : "left",
-	Direction.RIGHT : "right",
-	Direction.UP : "up",
-	Direction.DOWN : "down"
-}
+var direction: Direction
 var is_attacking := false
-var current_weapon: DamagingComponent
+var current_weapon: Area2D
+
+func _ready() -> void:
+	direction = Direction.new(Direction.Directions.DOWN, self)
 
 func _physics_process(delta: float) -> void:
 	if not is_attacking:
@@ -30,57 +56,55 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func movement_logic_and_animation(_delta: float) -> void:
-	var input_vector: Vector2
 	
+	var idle: bool = false
 	if Input.is_action_pressed("move right"):
-		input_vector = Vector2.RIGHT
-		last_direction = Direction.RIGHT
+		direction = Direction.new(Direction.Directions.RIGHT, self)
 	elif Input.is_action_pressed("move left"):
-		input_vector = Vector2.LEFT
-		last_direction = Direction.LEFT
+		direction = Direction.new(Direction.Directions.LEFT, self)
 	elif Input.is_action_pressed("move up"):
-		input_vector = Vector2.UP
-		last_direction = Direction.UP
+		direction = Direction.new(Direction.Directions.UP, self)
 	elif Input.is_action_pressed("move down"):
-		input_vector = Vector2.DOWN
-		last_direction = Direction.DOWN
+		direction = Direction.new(Direction.Directions.DOWN, self)
 	else:
-		input_vector = Vector2.ZERO
-	
-	velocity = input_vector * movement_speed
+		velocity = Vector2.ZERO
+		idle = true
 	
 	var animation_name: String
-	if input_vector == Vector2.ZERO:
-		animation_name = "idle %s" % directions[last_direction]
+	if idle:
+		animation_name = "idle %s" % direction.string
 	else:
-		animation_name = "walk %s" % directions[last_direction]
+		animation_name = "walk %s" % direction.string
+		velocity = direction.vector * movement_speed
 	animated_sprite_2d.play(animation_name)
 
 func attack_logic_and_animation(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
 		velocity = Vector2.ZERO
-		var animation_name := "attack %s" % directions[last_direction]
+		var animation_name := "attack %s" % direction.string
 		animated_sprite_2d.play(animation_name)
+		weapon_sound.play()
 		
-		match last_direction:
-			Direction.UP:
-				current_weapon = weapon_up
-			Direction.DOWN:
-				current_weapon = weapon_down
-			Direction.LEFT:
-				current_weapon = weapon_left
-			Direction.RIGHT:
-				current_weapon = weapon_right
 		current_weapon.show()
-		current_weapon.disabled = false
+		set_weapon_disabled(false)
 		attack_timer.start(attack_duration)
 
 func _on_attack_timer_timeout() -> void:
 	is_attacking = false
 	current_weapon.hide()
-	current_weapon.disabled = true
-
+	set_weapon_disabled(true)
 
 func _on_damageable_component_took_damage(amount: int) -> void:
-	queue_free()
+	health -= amount
+	if health <= 0:
+		queue_free()
+
+func set_weapon_disabled(disabled: bool) -> void:
+	(current_weapon.get_node("CollisionShape2D") as CollisionShape2D).disabled = disabled
+
+func _on_weapon_area_entered(area: Area2D) -> void:
+	if area is KnockbackCompnent:
+		area.knockback(direction.vector, 100, 0.25)
+	if area is DamageComponent:
+		area.take_damage(strength)

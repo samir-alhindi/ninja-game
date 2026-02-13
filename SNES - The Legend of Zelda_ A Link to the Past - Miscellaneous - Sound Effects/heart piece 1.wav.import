@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfbibcq5n0jcx"
+path="res://.godot/imported/heart piece 1.wav-894fca2d5470011b98bd5c48017ac955.sample"
+
+[deps]
+
+source_file="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/heart piece 1.wav"
+dest_files=["res://.godot/imported/heart piece 1.wav-894fca2d5470011b98bd5c48017ac955.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
