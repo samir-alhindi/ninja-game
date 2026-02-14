@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b5g33wvjhrwnt"]
+
+[ext_resource type="Texture2D" uid="uid://dkw6rg84j22rk" path="res://Ninja Adventure - Asset Pack/Ui/Receptacle/Heart.png" id="1_qf5t1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
+atlas = ExtResource("1_qf5t1")
+region = Rect2(64, 2, 16, 13)
+
+[node name="HeartSprite" type="TextureRect" unique_id=752013765]
+texture = SubResource("AtlasTexture_knn7v")
+stretch_mode = 2

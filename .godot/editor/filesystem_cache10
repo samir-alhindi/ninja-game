@@ -1,16 +1,19 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1770978395
+::res://::1771077928
 icon.svg::CompressedTexture2D::618367769540306195::1770807542::1770807547::1::::<><><>0<>0<>3dfe518675dc1416ae7cdfa7214a3a10<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://components/::1770971185
 ::res://components/damage/::1770971240
 damage_component.gd::GDScript::4672727666581499298::1770971236::0::1::::DamageComponent<>Area2D<><>0<>0<><>::
 damage_component.tscn::PackedScene::8655900490651190126::1770971240::0::1::::<><><>0<>0<><>::uid://b7tre3efxqlsc::::res://components/damage/damage_component.gd
-::res://components/knockback/::1770978313
+::res://components/knockback/::1770982804
 knockback_component.gd::GDScript::6593020941683413699::1770978313::0::1::::KnockbackCompnent<>Area2D<><>0<>0<><>::
-knockback_component.tscn::PackedScene::315348753707151955::1770971580::0::1::::<><><>0<>0<><>::uid://c06ydd7qxybl0::::res://components/knockback/knockback_component.gd
-::res://enemy/::1770978346
-enemy.gd::GDScript::4946000145808831295::1770978293::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
-enemy.tscn::PackedScene::6193916720848803065::1770978346::0::1::::<><><>0<>0<><>::uid://dt8uhwwsl3qt3::::res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/Slime2.png<>uid://ccp45ufa25hf0::::res://enemy/enemy.gd<>uid://dvk8ofnxjkd0q::::res://components/damage/damage_component.tscn<>uid://eq00otqnti1x::::res://components/knockback/knockback_component.tscn
+knockback_component.tscn::PackedScene::315348753707151955::1770982804::0::1::::<><><>0<>0<><>::uid://c06ydd7qxybl0::::res://components/knockback/knockback_component.gd
+::res://enemy/::1770982543
+enemy.gd::GDScript::4946000145808831295::1770982492::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
+enemy.tscn::PackedScene::6193916720848803065::1770982543::0::1::::<><><>0<>0<><>::uid://dt8uhwwsl3qt3::::res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/Slime2.png<>uid://ccp45ufa25hf0::::res://enemy/enemy.gd<>uid://dvk8ofnxjkd0q::::res://components/damage/damage_component.tscn<>uid://eq00otqnti1x::::res://components/knockback/knockback_component.tscn<>uid://kx6qluhyi2a3::::res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/enemy hit.wav
+::res://follower_enemy/::1771075265
+follower_enemy.gd::GDScript::6743445013889151831::1771075215::0::1::::FollowerEnemy<>CharacterBody2D<><>0<>0<><>::
+follower_enemy.tscn::PackedScene::119041433501160046::1771075265::0::1::::<><><>0<>0<><>::uid://c3cts3ujnwu8f::::res://follower_enemy/follower_enemy.gd<>uid://dt8uhwwsl3qt3::::res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/Slime2.png<>uid://dvk8ofnxjkd0q::::res://components/damage/damage_component.tscn<>uid://eq00otqnti1x::::res://components/knockback/knockback_component.tscn<>uid://kx6qluhyi2a3::::res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/enemy hit.wav
 ::res://Ninja Adventure - Asset Pack/::1770808028
 Example 5 ( Old Version).png::CompressedTexture2D::1888833740725745982::1569096251::1770808028::1::::<><><>0<>0<>d01756845307ffa1187f095d724217a8<>res://.godot/imported/Example 5 ( Old Version).png-b37b7a3edf56225849e3f72a9f8ed1b1.ctex::
 LICENSE.txt::TextFile::-1::1614098298::0::1::::<><><>0<>0<><>::
@@ -2388,10 +2391,13 @@ nine_path_panel.png::CompressedTexture2D::1049965058096172299::1713469657::17708
 nine_path_panel.png::CompressedTexture2D::961831879021586036::1713470005::1770808028::1::::<><><>0<>0<>b995af4547602c96f531c38d8fbf1630<>res://.godot/imported/nine_path_panel.png-590de20d8676ecb8d37c0170678a1e67.ctex::
 ::res://Ninja Adventure - Asset Pack/Ui/Theme/Wip/ThemeWood4/::1770808028
 nine_path_panel.png::CompressedTexture2D::6531063156051470046::1713471122::1770808028::1::::<><><>0<>0<>4be9007471a1a60fa7ab52f11aba3916<>res://.godot/imported/nine_path_panel.png-e6efca0f39f74d6975e80ba22193bab7.ctex::
-::res://player/::1770978263
-player.gd::GDScript::547510077686890147::1770978257::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene::3594221054944446509::1770978263::0::1::::<><><>0<>0<><>::uid://h2hn8dpdkqu2::::res://player/player.gd<>uid://0wqo08ppgyux::::res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Walk.png<>uid://117th8lgbcdw::::res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png<>uid://dualqpud1jpvv::::res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png<>uid://618ncu12hrge::::res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/SpriteInHand.png<>uid://dvk8ofnxjkd0q::::res://components/damage/damage_component.tscn
-::res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/::1770978397
+::res://player/::1771077888
+player.gd::GDScript::547510077686890147::1771076966::0::1::::Player<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::3594221054944446509::1771077888::0::1::::<><><>0<>0<><>::uid://h2hn8dpdkqu2::::res://player/player.gd<>uid://0wqo08ppgyux::::res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Walk.png<>uid://117th8lgbcdw::::res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png<>uid://dualqpud1jpvv::::res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png<>uid://cmsea8l87t1x8::::res://player/weapon/weapon.tscn<>uid://dvk8ofnxjkd0q::::res://components/damage/damage_component.tscn<>uid://d2bs87bpy7311::::res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/fighter sword 1.wav<>uid://81rem6ejea54::::res://Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Hit8.wav<>uid://eq00otqnti1x::::res://components/knockback/knockback_component.tscn
+::res://player/weapon/::1771077866
+weapon.gd::GDScript::6237314709482646718::1771076921::0::1::::PlayerWeapon<>Node2D<><>0<>0<><>::
+weapon.tscn::PackedScene::5652510910393045263::1771077866::0::1::::<><><>0<>0<><>::uid://cu4nwrisrglas::::res://player/weapon/weapon.gd<>uid://vr6wlka602gs::::res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/Sprite.png
+::res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/::1770978402
 agahnim charge.wav::AudioStreamWAV::5151178982546767920::1465204905::1770978401::1::::<><><>0<>0<>ae29a4cdd1a4f39bf30c9c6c7e2cebdc<>res://.godot/imported/agahnim charge.wav-420561bba88400d545ec2f751269cb5e.sample::
 agahnim shoot.wav::AudioStreamWAV::1349273091495473859::1465204928::1770978401::1::::<><><>0<>0<>0d92634c2edd9557926ae48c58643ff2<>res://.godot/imported/agahnim shoot.wav-bd6e86858a02a17c9d51731f16b8dac6.sample::
 ambient rumbling.wav::AudioStreamWAV::683028252688169127::1465361600::1770978402::1::::<><><>0<>0<>db890d437f7f50732bd738820fd26a48<>res://.godot/imported/ambient rumbling.wav-d48cf617ea03b9689168a91658770089.sample::
@@ -2521,5 +2527,7 @@ water.wav::AudioStreamWAV::3208411332550897232::1465360645::1770978401::1::::<><
 whirpool warp.wav::AudioStreamWAV::422946836947855007::1465201573::1770978401::1::::<><><>0<>0<>aa6197efcc733fa7b6e11640b1e33eba<>res://.godot/imported/whirpool warp.wav-b0151de7191861378024d06cd0d23d21.sample::
 whirpool.wav::AudioStreamWAV::4155841473488506409::1465360561::1770978401::1::::<><><>0<>0<>701e5c6d1a7821317fb6fea95b5d5922<>res://.godot/imported/whirpool.wav-ae7414cf95258a55e917852b462af13a.sample::
 zol.wav::AudioStreamWAV::5392114004474939546::1465205017::1770978401::1::::<><><>0<>0<>3c080689be6d04b253cb1242e5467edc<>res://.godot/imported/zol.wav-1ff62e2f357dc1b435032593a5da535b.sample::
-::res://world/::1770921089
-world.tscn::PackedScene::370247405546481824::1770921089::0::1::::<><><>0<>0<><>::uid://brhckb1lkjt2d::::res://player/player.tscn<>uid://b7yj4dqffi1si::::res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png<>uid://cuim5yngrx5yj::::res://enemy/enemy.tscn
+::res://ui/::1770982046
+heart_sprite.tscn::PackedScene::4506223525758792445::1770982046::0::1::::<><><>0<>0<><>::uid://dkw6rg84j22rk::::res://Ninja Adventure - Asset Pack/Ui/Receptacle/Heart.png
+::res://world/::1771075125
+world.tscn::PackedScene::370247405546481824::1771075125::0::1::::<><><>0<>0<><>::uid://brhckb1lkjt2d::::res://player/player.tscn<>uid://b7yj4dqffi1si::::res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png<>uid://bxwuh3tovjog::::res://follower_enemy/follower_enemy.tscn

@@ -5,9 +5,11 @@ class_name Enemy extends CharacterBody2D
 @onready var knockback_timer: Timer = %KnockbackTimer
 @onready var hurt_sound: AudioStreamPlayer = %HurtSound
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var knockback_component: KnockbackCompnent = %KnockbackComponent
 
 @export var movement_speed: int = 100
 @export var health: int = 3
+@export var strength: int = 1
 
 @export_category("direction change")
 @export var min_direction_change_time: float = 5.0
@@ -22,8 +24,7 @@ func _ready() -> void:
 	direction_change_timer.start(direction_change_time())
 
 func _physics_process(_delta: float) -> void:
-	if not getting_knocked_back:
-		velocity = direction * movement_speed
+	velocity = direction * movement_speed + knockback_component.force
 	move_and_slide()
 	
 	match direction:
@@ -52,11 +53,9 @@ func _on_damageable_component_took_damage(amount: int) -> void:
 func direction_change_time() -> float:
 	return randf_range(min_direction_change_time, max_direction_change_time)
 
-func _on_knockback_component_knocked_back(direction: Vector2, force: int ,duration: float)-> void:
-	getting_knocked_back = true
-	knockback_timer.start(duration)
-	velocity = direction * force
-	move_and_slide()
-
-func _on_knockback_timer_timeout() -> void:
-	getting_knocked_back = false
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area is DamageComponent:
+		area.take_damage(strength)
+	if area is KnockbackCompnent:
+		var dir := global_position.direction_to(area.global_position)
+		area.knockback(dir, 200)

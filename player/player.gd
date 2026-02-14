@@ -1,17 +1,21 @@
 class_name Player extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
-@onready var attack_timer: Timer = %AttackTimer
 @onready var weapon_sound: AudioStreamPlayer = %WeaponSound
+@onready var hearts_container: HBoxContainer = %HeartsContainer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var hurt_sound: AudioStreamPlayer = %HurtSound
+@onready var knockback_component: KnockbackCompnent = %KnockbackComponent
+@onready var debug_label: Label = %DebugLabel
 
-@onready var weapon_down: Area2D = %WeaponDown
-@onready var weapon_right: Area2D = %WeaponRight
-@onready var weapon_left: Area2D = %WeaponLeft
-@onready var weapon_up: Area2D = %WeaponUp
+@onready var weapon_down: PlayerWeapon = %WeaponDown
+@onready var weapon_right: PlayerWeapon = %WeaponRight
+@onready var weapon_left: PlayerWeapon = %WeaponLeft
+@onready var weapon_up: PlayerWeapon = %WeaponUp
 
 @export var movement_speed: int = 100
 @export var attack_duration := 0.5
-@export var health: int = 3
+@export var health: int = 3: set = set_health
 @export var strength: int = 1
 
 class Direction:
@@ -22,9 +26,9 @@ class Direction:
 	var string: String
 	var current_weapon: Area2D
 	
-	func _init(direction: Directions, player: Player) -> void:
-		self.direction = direction
-		match direction:
+	func _init(dir: Directions, player: Player) -> void:
+		self.direction = dir
+		match dir:
 			Directions.LEFT:
 				vector = Vector2.LEFT
 				string = "left"
@@ -44,10 +48,11 @@ class Direction:
 
 var direction: Direction
 var is_attacking := false
-var current_weapon: Area2D
+var current_weapon: PlayerWeapon
 
 func _ready() -> void:
 	direction = Direction.new(Direction.Directions.DOWN, self)
+	set_health(health)
 
 func _physics_process(delta: float) -> void:
 	if not is_attacking:
@@ -57,25 +62,23 @@ func _physics_process(delta: float) -> void:
 
 func movement_logic_and_animation(_delta: float) -> void:
 	
-	var idle: bool = false
-	if Input.is_action_pressed("move right"):
+	var input_vector = Input.get_vector("move left", "move right","move up", "move down")
+	velocity = input_vector * movement_speed + knockback_component.force
+	
+	if input_vector.x > 0:
 		direction = Direction.new(Direction.Directions.RIGHT, self)
-	elif Input.is_action_pressed("move left"):
+	if input_vector.x < 0:
 		direction = Direction.new(Direction.Directions.LEFT, self)
-	elif Input.is_action_pressed("move up"):
-		direction = Direction.new(Direction.Directions.UP, self)
-	elif Input.is_action_pressed("move down"):
+	if input_vector.y > 0:
 		direction = Direction.new(Direction.Directions.DOWN, self)
-	else:
-		velocity = Vector2.ZERO
-		idle = true
+	if input_vector.y < 0:
+		direction = Direction.new(Direction.Directions.UP, self)
 	
 	var animation_name: String
-	if idle:
+	if input_vector == Vector2.ZERO:
 		animation_name = "idle %s" % direction.string
 	else:
 		animation_name = "walk %s" % direction.string
-		velocity = direction.vector * movement_speed
 	animated_sprite_2d.play(animation_name)
 
 func attack_logic_and_animation(_delta: float) -> void:
@@ -86,25 +89,29 @@ func attack_logic_and_animation(_delta: float) -> void:
 		animated_sprite_2d.play(animation_name)
 		weapon_sound.play()
 		
-		current_weapon.show()
-		set_weapon_disabled(false)
-		attack_timer.start(attack_duration)
-
-func _on_attack_timer_timeout() -> void:
-	is_attacking = false
-	current_weapon.hide()
-	set_weapon_disabled(true)
+		current_weapon.slash()
+		await current_weapon.finished_slashing
+		is_attacking = false
 
 func _on_damageable_component_took_damage(amount: int) -> void:
 	health -= amount
+	animation_player.play("hurt")
+	hurt_sound.play()
 	if health <= 0:
 		queue_free()
 
-func set_weapon_disabled(disabled: bool) -> void:
-	(current_weapon.get_node("CollisionShape2D") as CollisionShape2D).disabled = disabled
-
 func _on_weapon_area_entered(area: Area2D) -> void:
 	if area is KnockbackCompnent:
-		area.knockback(direction.vector, 100, 0.25)
+		var dir := global_position.direction_to(area.global_position)
+		area.knockback(dir, 100)
 	if area is DamageComponent:
 		area.take_damage(strength)
+
+func set_health(new_val) -> void:
+	health = new_val
+	for child: Node in hearts_container.get_children():
+		child.queue_free()
+	for i in range(health):
+		const HEART_SPRITE := preload("uid://b5g33wvjhrwnt")
+		var sprite: TextureRect = HEART_SPRITE.instantiate()
+		hearts_container.add_child(sprite)

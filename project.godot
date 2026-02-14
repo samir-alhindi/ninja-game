@@ -13,7 +13,7 @@ config_version=5
 config/name="ninja game"
 run/main_scene="uid://fjl6kkh371ii"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://qkjm2wdxvko6"
 
 [display]
 
@@ -22,6 +22,10 @@ window/size/viewport_height=180
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
+
+[global_group]
+
+player=""
 
 [input]
 

@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cmsea8l87t1x8"]
+
+[ext_resource type="Script" uid="uid://cu4nwrisrglas" path="res://player/weapon/weapon.gd" id="1_2fync"]
+[ext_resource type="Texture2D" uid="uid://vr6wlka602gs" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/Sprite.png" id="1_gytx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(11, 17)
+
+[sub_resource type="Animation" id="Animation_2fync"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707963267948966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RotationPoint/Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gytx5"]
+resource_name = "attack"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationPoint:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -3.141592653589793]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RotationPoint/Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fync"]
+_data = {
+&"RESET": SubResource("Animation_2fync"),
+&"slash": SubResource("Animation_gytx5")
+}
+
+[node name="PlayerWeapon" type="Node2D" unique_id=1506364793]
+visible = false
+script = ExtResource("1_2fync")
+
+[node name="RotationPoint" type="Node2D" parent="." unique_id=1050615036]
+rotation = -1.5707964
+
+[node name="Area2D" type="Area2D" parent="RotationPoint" unique_id=1651200135]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="RotationPoint/Area2D" unique_id=1078612479]
+texture = ExtResource("1_gytx5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationPoint/Area2D" unique_id=1363024278]
+unique_name_in_owner = true
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=379319737]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_2fync")
+
+[connection signal="area_entered" from="RotationPoint/Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,7 +1,7 @@
-res://components/knockbacking/
-res://components/knockbackable/
-res://components/damaging/
-res://components/damageable/
+res://player/weapon/
+res://follower_enemy/
+res://ui/
+res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/
 res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/
 res://enemy/
 res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/

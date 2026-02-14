@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://brhckb1lkjt2d" path="res://player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Texture2D" uid="uid://b7yj4dqffi1si" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetField.png" id="2_tcf2h"]
-[ext_resource type="PackedScene" uid="uid://cuim5yngrx5yj" path="res://enemy/enemy.tscn" id="3_4717r"]
+[ext_resource type="PackedScene" uid="uid://cuim5yngrx5yj" path="res://enemy/enemy.tscn" id="4_mmdvd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4717r"]
 texture = ExtResource("2_tcf2h")
@@ -86,11 +86,11 @@ tile_set = SubResource("TileSet_h5o24")
 [node name="Player" parent="." unique_id=279543829 instance=ExtResource("1_6xmxd")]
 position = Vector2(161, 86)
 
-[node name="Enemy" parent="." unique_id=1588866589 instance=ExtResource("3_4717r")]
-position = Vector2(92, 86)
+[node name="Enemy" parent="." unique_id=1588866589 instance=ExtResource("4_mmdvd")]
+position = Vector2(106, 84)
 
-[node name="Enemy2" parent="." unique_id=1197625565 instance=ExtResource("3_4717r")]
-position = Vector2(158, 48)
+[node name="Enemy2" parent="." unique_id=1189854958 instance=ExtResource("4_mmdvd")]
+position = Vector2(159, 27)
 
-[node name="Enemy3" parent="." unique_id=538176746 instance=ExtResource("3_4717r")]
-position = Vector2(228, 89)
+[node name="Enemy3" parent="." unique_id=1608888225 instance=ExtResource("4_mmdvd")]
+position = Vector2(247, 100)

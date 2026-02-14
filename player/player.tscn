@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://0wqo08ppgyux" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Walk.png" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://117th8lgbcdw" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dualqpud1jpvv" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png" id="2_yw30f"]
-[ext_resource type="Texture2D" uid="uid://618ncu12hrge" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/SpriteInHand.png" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://cmsea8l87t1x8" path="res://player/weapon/weapon.tscn" id="5_8t03j"]
 [ext_resource type="PackedScene" uid="uid://dvk8ofnxjkd0q" path="res://components/damage/damage_component.tscn" id="7_boad6"]
 [ext_resource type="AudioStream" uid="uid://d2bs87bpy7311" path="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/fighter sword 1.wav" id="7_rgyib"]
+[ext_resource type="AudioStream" uid="uid://81rem6ejea54" path="res://Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Hit8.wav" id="8_rgyib"]
+[ext_resource type="PackedScene" uid="uid://eq00otqnti1x" path="res://components/knockback/knockback_component.tscn" id="9_hg6s5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
 atlas = ExtResource("2_yw30f")
@@ -242,13 +244,50 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 5.0990195
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
-size = Vector2(11, 17)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_boad6"]
 radius = 7.0
 
-[node name="Player" type="CharacterBody2D" unique_id=279543829]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hg6s5"]
+radius = 7.071068
+
+[sub_resource type="Animation" id="Animation_1wwld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_pmsee"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1.0, 0.0, 1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1wwld"]
+_data = {
+&"RESET": SubResource("Animation_1wwld"),
+&"hurt": SubResource("Animation_pmsee")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=279543829 groups=["player"]]
 collision_layer = 2
 collision_mask = 13
 motion_mode = 1
@@ -257,10 +296,11 @@ script = ExtResource("1_g1dw6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93024993]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"attack left"
+animation = &"attack up"
 autoplay = "idle down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=181110495]
+visible = false
 shape = SubResource("CircleShape2D_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=181001614]
@@ -268,75 +308,27 @@ shape = SubResource("CircleShape2D_rkbax")
 [node name="Weapons" type="Node2D" parent="." unique_id=365599870]
 unique_name_in_owner = true
 
-[node name="WeaponDown" type="Area2D" parent="Weapons" unique_id=768966297]
+[node name="WeaponLeft" parent="Weapons" unique_id=1506364793 instance=ExtResource("5_8t03j")]
 unique_name_in_owner = true
-visible = false
-position = Vector2(-2, 13)
-collision_layer = 0
-collision_mask = 4
+position = Vector2(-2, 4)
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponDown" unique_id=1118240298]
-texture = ExtResource("5_qjkh3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponDown" unique_id=1937617385]
-position = Vector2(-0.5, 4.5)
-shape = SubResource("RectangleShape2D_g6k8r")
-disabled = true
-
-[node name="WeaponRight" type="Area2D" parent="Weapons" unique_id=89894736]
+[node name="WeaponUp" parent="Weapons" unique_id=617415542 instance=ExtResource("5_8t03j")]
 unique_name_in_owner = true
-visible = false
-position = Vector2(13, 4)
-rotation = 4.712389
-collision_layer = 0
-collision_mask = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponRight" unique_id=1616446068]
-texture = ExtResource("5_qjkh3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponRight" unique_id=887179253]
-position = Vector2(-0.5, 4)
-shape = SubResource("RectangleShape2D_g6k8r")
-disabled = true
-
-[node name="WeaponUp" type="Area2D" parent="Weapons" unique_id=1218808045]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-3, -13)
-rotation = 3.1415927
-collision_layer = 0
-collision_mask = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponUp" unique_id=874375486]
-texture = ExtResource("5_qjkh3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponUp" unique_id=74706595]
-position = Vector2(-0.5, 4)
-shape = SubResource("RectangleShape2D_g6k8r")
-disabled = true
-
-[node name="WeaponLeft" type="Area2D" parent="Weapons" unique_id=1317374353]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-13, 4)
+position = Vector2(-4, -2)
 rotation = 1.5707964
-collision_layer = 0
-collision_mask = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/WeaponLeft" unique_id=1135931854]
-texture = ExtResource("5_qjkh3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/WeaponLeft" unique_id=2072894096]
-position = Vector2(-0.5, 4)
-shape = SubResource("RectangleShape2D_g6k8r")
-disabled = true
-
-[node name="AttackTimer" type="Timer" parent="." unique_id=336858966]
+[node name="WeaponRight" parent="Weapons" unique_id=1731996766 instance=ExtResource("5_8t03j")]
 unique_name_in_owner = true
-wait_time = 0.5
-one_shot = true
+position = Vector2(2, 4)
+rotation = 3.1415927
+
+[node name="WeaponDown" parent="Weapons" unique_id=2068808696 instance=ExtResource("5_8t03j")]
+unique_name_in_owner = true
+position = Vector2(-2, 2)
+rotation = 4.712389
 
 [node name="DamageComponent" parent="." unique_id=1429838472 instance=ExtResource("7_boad6")]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -344,15 +336,52 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_boad6")
 debug_color = Color(0.6783122, 0.5051648, 5.7756904e-07, 0.41960785)
 
+[node name="KnockbackComponent" parent="." unique_id=1500406809 instance=ExtResource("9_hg6s5")]
+unique_name_in_owner = true
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="KnockbackComponent" index="0" unique_id=1749381845]
+shape = SubResource("CircleShape2D_hg6s5")
+debug_color = Color(1.7808378e-06, 0.64992064, 0.13606134, 0.41960785)
+
 [node name="WeaponSound" type="AudioStreamPlayer" parent="." unique_id=1759539607]
 unique_name_in_owner = true
 stream = ExtResource("7_rgyib")
 
-[connection signal="area_entered" from="Weapons/WeaponDown" to="." method="_on_weapon_area_entered"]
-[connection signal="area_entered" from="Weapons/WeaponRight" to="." method="_on_weapon_area_entered"]
-[connection signal="area_entered" from="Weapons/WeaponUp" to="." method="_on_weapon_area_entered"]
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1468874747]
+unique_name_in_owner = true
+stream = ExtResource("8_rgyib")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=551239488]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=687344436]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="HeartsContainer" type="HBoxContainer" parent="UI/MarginContainer" unique_id=1934513031]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1486589837]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_1wwld")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1881059788]
+unique_name_in_owner = true
+offset_left = -19.0
+offset_top = 10.0
+offset_right = 21.0
+offset_bottom = 33.0
+
 [connection signal="area_entered" from="Weapons/WeaponLeft" to="." method="_on_weapon_area_entered"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="Weapons/WeaponUp" to="." method="_on_weapon_area_entered"]
+[connection signal="area_entered" from="Weapons/WeaponRight" to="." method="_on_weapon_area_entered"]
+[connection signal="area_entered" from="Weapons/WeaponDown" to="." method="_on_weapon_area_entered"]
 [connection signal="took_damage" from="DamageComponent" to="." method="_on_damageable_component_took_damage"]
 
 [editable path="DamageComponent"]
+[editable path="KnockbackComponent"]
