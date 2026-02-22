@@ -1,3 +1,4 @@
+res://weapon_scene/
 res://global/
 res://game/
 res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/
@@ -9,7 +10,6 @@ res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime/
 res://enemy_battler/
 res://battler/
 res://player_battler/
-res://player/weapon/
 res://follower_enemy/
 res://ui/
 res://enemy/

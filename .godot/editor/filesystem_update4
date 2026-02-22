@@ -15,3 +15,6 @@ res://global/global.tscn
 res://global/global.gd
 res://enemy_battler/enemy_battler.tscn
 res://battler/battler.tscn
+res://weapon_scene/weapon_scene.tscn
+res://weapon_scene/weapon_scene.gd
+res://player/player.gd

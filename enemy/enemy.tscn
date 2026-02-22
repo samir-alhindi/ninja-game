@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dt8uhwwsl3qt3" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/Slime2.png" id="1_2mvqj"]
 [ext_resource type="Script" uid="uid://ccp45ufa25hf0" path="res://enemy/enemy.gd" id="1_p200p"]
-[ext_resource type="PackedScene" uid="uid://dvk8ofnxjkd0q" path="res://components/damage/damage_component.tscn" id="2_ofsxj"]
-[ext_resource type="PackedScene" uid="uid://eq00otqnti1x" path="res://components/knockback/knockback_component.tscn" id="4_p200p"]
 [ext_resource type="AudioStream" uid="uid://kx6qluhyi2a3" path="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/enemy hit.wav" id="5_pmsee"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofsxj"]
@@ -144,9 +142,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_p200p"]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ofsxj"]
-radius = 10.049875
-
 [sub_resource type="Animation" id="Animation_1wwld"]
 length = 0.001
 tracks/0/type = "value"
@@ -184,9 +179,6 @@ _data = {
 &"hurt": SubResource("Animation_pmsee")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pmsee"]
-radius = 8.0
-
 [node name="Enemy" type="CharacterBody2D" unique_id=1588866589]
 collision_layer = 4
 collision_mask = 7
@@ -203,27 +195,9 @@ animation = &"walk right"
 frame_progress = 0.14631328
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2566815]
+visible = false
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_p200p")
-
-[node name="DamageComponent" parent="." unique_id=1429838472 instance=ExtResource("2_ofsxj")]
-position = Vector2(0, 2)
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" parent="DamageComponent" index="0" unique_id=1061504655]
-shape = SubResource("CircleShape2D_ofsxj")
-debug_color = Color(1, 0, 0, 0.41960785)
-
-[node name="KnockbackComponent" parent="." unique_id=1500406809 instance=ExtResource("4_p200p")]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" parent="KnockbackComponent" index="0" unique_id=1749381845]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_ofsxj")
-debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="DirectionChangeTimer" type="Timer" parent="." unique_id=1142699012]
 unique_name_in_owner = true
@@ -240,19 +214,5 @@ stream = ExtResource("5_pmsee")
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_1wwld")
 
-[node name="HitBox" type="Area2D" parent="." unique_id=48676307]
-position = Vector2(0, 2)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=696899941]
-shape = SubResource("CircleShape2D_pmsee")
-debug_color = Color(1.6845763e-07, 0.65004927, 0.1302014, 0.41960785)
-
-[connection signal="took_damage" from="DamageComponent" to="." method="_on_damageable_component_took_damage"]
 [connection signal="timeout" from="DirectionChangeTimer" to="." method="_on_direction_change_timer_timeout"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-
-[editable path="DamageComponent"]
-[editable path="KnockbackComponent"]

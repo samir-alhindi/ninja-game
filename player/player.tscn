@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0wqo08ppgyux" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Walk.png" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://117th8lgbcdw" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://dualqpud1jpvv" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png" id="2_yw30f"]
-[ext_resource type="PackedScene" uid="uid://cmsea8l87t1x8" path="res://player/weapon/weapon.tscn" id="5_8t03j"]
+[ext_resource type="PackedScene" uid="uid://dem6v7a3ywgfj" path="res://weapon_scene/weapon_scene.tscn" id="5_hg6s5"]
 [ext_resource type="PackedScene" uid="uid://dvk8ofnxjkd0q" path="res://components/damage/damage_component.tscn" id="7_boad6"]
 [ext_resource type="AudioStream" uid="uid://d2bs87bpy7311" path="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/fighter sword 1.wav" id="7_rgyib"]
 [ext_resource type="AudioStream" uid="uid://81rem6ejea54" path="res://Ninja Adventure - Asset Pack/Audio/Sounds/Hit & Impact/Hit8.wav" id="8_rgyib"]
@@ -296,7 +296,7 @@ script = ExtResource("1_g1dw6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=93024993]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_g6k8r")
-animation = &"attack up"
+animation = &"attack left"
 autoplay = "idle down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=181110495]
@@ -308,24 +308,28 @@ shape = SubResource("CircleShape2D_rkbax")
 [node name="Weapons" type="Node2D" parent="." unique_id=365599870]
 unique_name_in_owner = true
 
-[node name="WeaponLeft" parent="Weapons" unique_id=1506364793 instance=ExtResource("5_8t03j")]
+[node name="WeaponDown" parent="Weapons" unique_id=1969658148 instance=ExtResource("5_hg6s5")]
 unique_name_in_owner = true
-position = Vector2(-2, 4)
+visible = false
+position = Vector2(-1, 8)
 
-[node name="WeaponUp" parent="Weapons" unique_id=617415542 instance=ExtResource("5_8t03j")]
+[node name="WeaponRight" parent="Weapons" unique_id=1122842084 instance=ExtResource("5_hg6s5")]
 unique_name_in_owner = true
-position = Vector2(-4, -2)
-rotation = 1.5707964
+visible = false
+position = Vector2(8, 4)
+rotation = 4.712389
 
-[node name="WeaponRight" parent="Weapons" unique_id=1731996766 instance=ExtResource("5_8t03j")]
+[node name="WeaponUp" parent="Weapons" unique_id=18423385 instance=ExtResource("5_hg6s5")]
 unique_name_in_owner = true
-position = Vector2(2, 4)
+visible = false
+position = Vector2(-3, -8)
 rotation = 3.1415927
 
-[node name="WeaponDown" parent="Weapons" unique_id=2068808696 instance=ExtResource("5_8t03j")]
+[node name="WeaponLeft" parent="Weapons" unique_id=1550443252 instance=ExtResource("5_hg6s5")]
 unique_name_in_owner = true
-position = Vector2(-2, 2)
-rotation = 4.712389
+visible = false
+position = Vector2(-8, 4)
+rotation = 1.5707964
 
 [node name="DamageComponent" parent="." unique_id=1429838472 instance=ExtResource("7_boad6")]
 visible = false
@@ -378,11 +382,13 @@ offset_top = 10.0
 offset_right = 21.0
 offset_bottom = 33.0
 
-[connection signal="area_entered" from="Weapons/WeaponLeft" to="." method="_on_weapon_area_entered"]
-[connection signal="area_entered" from="Weapons/WeaponUp" to="." method="_on_weapon_area_entered"]
-[connection signal="area_entered" from="Weapons/WeaponRight" to="." method="_on_weapon_area_entered"]
-[connection signal="area_entered" from="Weapons/WeaponDown" to="." method="_on_weapon_area_entered"]
+[node name="WeaponTimer" type="Timer" parent="." unique_id=1536488944]
+unique_name_in_owner = true
+wait_time = 0.35
+one_shot = true
+
 [connection signal="took_damage" from="DamageComponent" to="." method="_on_damageable_component_took_damage"]
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]
 
 [editable path="DamageComponent"]
 [editable path="KnockbackComponent"]

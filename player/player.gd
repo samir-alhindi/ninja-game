@@ -7,11 +7,13 @@ class_name Player extends CharacterBody2D
 @onready var hurt_sound: AudioStreamPlayer = %HurtSound
 @onready var knockback_component: KnockbackCompnent = %KnockbackComponent
 @onready var debug_label: Label = %DebugLabel
+@onready var weapon_timer: Timer = %WeaponTimer
 
-@onready var weapon_down: PlayerWeapon = %WeaponDown
-@onready var weapon_right: PlayerWeapon = %WeaponRight
-@onready var weapon_left: PlayerWeapon = %WeaponLeft
-@onready var weapon_up: PlayerWeapon = %WeaponUp
+@onready var weapons: Node2D = %Weapons
+@onready var weapon_down: WeaponScene = %WeaponDown
+@onready var weapon_right: WeaponScene = %WeaponRight
+@onready var weapon_up: WeaponScene = %WeaponUp
+@onready var weapon_left: WeaponScene = %WeaponLeft
 
 @export var movement_speed: int = 100
 @export var attack_duration := 0.5
@@ -48,9 +50,11 @@ class Direction:
 
 var direction: Direction
 var is_attacking := false
-var current_weapon: PlayerWeapon
+var current_weapon: WeaponScene
 
 func _ready() -> void:
+	for weapon: WeaponScene in weapons.get_children():
+		weapon.body_entered.connect(_on_weapon_body_entered)
 	direction = Direction.new(Direction.Directions.DOWN, self)
 	set_health(health)
 
@@ -89,9 +93,9 @@ func attack_logic_and_animation(_delta: float) -> void:
 		animated_sprite_2d.play(animation_name)
 		weapon_sound.play()
 		
-		current_weapon.slash()
-		await current_weapon.finished_slashing
-		is_attacking = false
+		current_weapon.show()
+		current_weapon.set_hitbox(false)
+		weapon_timer.start()
 
 func _on_damageable_component_took_damage(amount: int) -> void:
 	health -= amount
@@ -100,12 +104,9 @@ func _on_damageable_component_took_damage(amount: int) -> void:
 	if health <= 0:
 		queue_free()
 
-func _on_weapon_area_entered(area: Area2D) -> void:
-	if area is KnockbackCompnent:
-		var dir := global_position.direction_to(area.global_position)
-		area.knockback(dir, 100)
-	if area is DamageComponent:
-		area.take_damage(strength)
+func _on_weapon_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		Global.start_battle.emit(body)
 
 func set_health(new_val) -> void:
 	health = new_val
@@ -115,3 +116,8 @@ func set_health(new_val) -> void:
 		const HEART_SPRITE := preload("uid://b5g33wvjhrwnt")
 		var sprite: TextureRect = HEART_SPRITE.instantiate()
 		hearts_container.add_child(sprite)
+
+func _on_weapon_timer_timeout() -> void:
+	current_weapon.hide()
+	current_weapon.set_hitbox(true)
+	is_attacking = false

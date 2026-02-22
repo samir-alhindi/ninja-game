@@ -5,7 +5,6 @@ class_name Enemy extends CharacterBody2D
 @onready var knockback_timer: Timer = %KnockbackTimer
 @onready var hurt_sound: AudioStreamPlayer = %HurtSound
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
-@onready var knockback_component: KnockbackCompnent = %KnockbackComponent
 
 @export var battle_data: BattlerData
 @export var movement_speed: int = 100
@@ -25,7 +24,7 @@ func _ready() -> void:
 	direction_change_timer.start(direction_change_time())
 
 func _physics_process(_delta: float) -> void:
-	velocity = direction * movement_speed + knockback_component.force
+	velocity = direction * movement_speed
 	move_and_slide()
 	
 	match direction:
@@ -44,18 +43,12 @@ func _on_direction_change_timer_timeout() -> void:
 	direction = DIRECTIONS.pick_random()
 	direction_change_timer.start(direction_change_time())
 
-func _on_damageable_component_took_damage(amount: int) -> void:
-	animation_player.play("hurt")
-	hurt_sound.play()
-	health -= amount
-	Global.start_battle.emit(battle_data)
-
 func direction_change_time() -> float:
 	return randf_range(min_direction_change_time, max_direction_change_time)
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
-	if area is DamageComponent:
-		area.take_damage(strength)
-	if area is KnockbackCompnent:
-		var dir := global_position.direction_to(area.global_position)
-		area.knockback(dir, 200)
+func die() -> void:
+	set_physics_process(false)
+	for i in range(6):
+		animation_player.play("hurt")
+		await animation_player.animation_finished
+	queue_free()
