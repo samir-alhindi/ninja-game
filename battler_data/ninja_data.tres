@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BattlerData" format=3 uid="uid://1kgr5f5teeiq"]
+
+[ext_resource type="Script" uid="uid://bi85lablvrto7" path="res://battler_data.gd" id="1_wq7ox"]
+[ext_resource type="Texture2D" uid="uid://117th8lgbcdw" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Idle.png" id="2_41ixl"]
+[ext_resource type="Texture2D" uid="uid://dualqpud1jpvv" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/Attack.png" id="2_gko10"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4f4g"]
+atlas = ExtResource("2_gko10")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gko10"]
+atlas = ExtResource("2_41ixl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wq7ox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4f4g")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gko10")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_wq7ox")
+name = "Ninja"
+max_health = 100
+speed = 20
+strength = 50
+sprite_frames = SubResource("SpriteFrames_wq7ox")
+metadata/_custom_type_script = "uid://bi85lablvrto7"

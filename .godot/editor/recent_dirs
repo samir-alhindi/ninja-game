@@ -1,9 +1,16 @@
+res://global/
+res://game/
+res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/
+res://battler_data/
+res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/
+res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/
+res://battle/
+res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime/
+res://enemy_battler/
+res://battler/
+res://player_battler/
 res://player/weapon/
 res://follower_enemy/
 res://ui/
-res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/
-res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/
 res://enemy/
-res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaGreen/SeparateAnim/
 res://player/
-res://world/

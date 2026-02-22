@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://l44h5nb2ub5t"]
+
+[ext_resource type="PackedScene" uid="uid://3t6a4pm4ttpx" path="res://battler/battler.tscn" id="1_w0k00"]
+[ext_resource type="Script" uid="uid://dncnfcosfo0ij" path="res://player_battler/player_battler.gd" id="2_qckex"]
+[ext_resource type="Texture2D" uid="uid://618ncu12hrge" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/SpriteInHand.png" id="3_6tkng"]
+
+[sub_resource type="Gradient" id="Gradient_6tkng"]
+offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0m672"]
+gradient = SubResource("Gradient_6tkng")
+width = 100
+
+[sub_resource type="Animation" id="Animation_0m672"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/TextureRect/AttackSlider:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_6tkng"]
+resource_name = "attack"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/TextureRect/AttackSlider:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -6), Vector2(100, -6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m672"]
+_data = {
+&"RESET": SubResource("Animation_0m672"),
+&"attack": SubResource("Animation_6tkng")
+}
+
+[node name="PlayerBattler" unique_id=893298890 groups=["player"] instance=ExtResource("1_w0k00")]
+script = ExtResource("2_qckex")
+
+[node name="Sword" type="Sprite2D" parent="AnimatedSprite2D" parent_id_path=PackedInt32Array(2107465465) index="0" unique_id=1030885112]
+unique_name_in_owner = true
+visible = false
+position = Vector2(13, 4)
+rotation = 4.712389
+texture = ExtResource("3_6tkng")
+
+[node name="UI" type="CanvasLayer" parent="." index="1" unique_id=866865561]
+
+[node name="AttackButton" type="Button" parent="UI" index="0" unique_id=1138679672]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -44.0
+offset_right = 67.0
+offset_bottom = -13.0
+grow_vertical = 0
+text = "Attack"
+
+[node name="AttackBar" type="Control" parent="." index="3" unique_id=733611916]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = 31.0
+offset_right = -40.0
+offset_bottom = 71.0
+
+[node name="PanelContainer" type="PanelContainer" parent="AttackBar" index="0" unique_id=1572553413]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 11.0
+
+[node name="MarginContainer" type="MarginContainer" parent="AttackBar/PanelContainer" index="0" unique_id=1339651757]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="AttackBar/PanelContainer/MarginContainer" index="0" unique_id=1089804155]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_0m672")
+
+[node name="AttackSlider" type="ColorRect" parent="AttackBar/PanelContainer/MarginContainer/TextureRect" index="0" unique_id=2113237127]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -6.0
+offset_right = 2.5
+offset_bottom = 14.0
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="AttackBar" index="1" unique_id=455873078]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_0m672")
+
+[connection signal="pressed" from="UI/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="animation_finished" from="AttackBar/AttackAnimationPlayer" to="." method="_on_attack_animation_player_animation_finished"]

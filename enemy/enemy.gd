@@ -7,6 +7,7 @@ class_name Enemy extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var knockback_component: KnockbackCompnent = %KnockbackComponent
 
+@export var battle_data: BattlerData
 @export var movement_speed: int = 100
 @export var health: int = 3
 @export var strength: int = 1
@@ -15,7 +16,7 @@ class_name Enemy extends CharacterBody2D
 @export var min_direction_change_time: float = 5.0
 @export var max_direction_change_time: float = 20.0
 
-const DIRECTIONS := [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT, Vector2.ZERO]
+const DIRECTIONS := [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
 var direction: Vector2
 var getting_knocked_back: bool = false
 
@@ -47,8 +48,7 @@ func _on_damageable_component_took_damage(amount: int) -> void:
 	animation_player.play("hurt")
 	hurt_sound.play()
 	health -= amount
-	if health <= 0:
-		queue_free()
+	Global.start_battle.emit(battle_data)
 
 func direction_change_time() -> float:
 	return randf_range(min_direction_change_time, max_direction_change_time)

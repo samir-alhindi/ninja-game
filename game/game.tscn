@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ffwpq180qldq"]
+
+[ext_resource type="PackedScene" uid="uid://fjl6kkh371ii" path="res://overworld/overworld.tscn" id="1_l1rk1"]
+[ext_resource type="Script" uid="uid://cy10lx2djm5r6" path="res://game/game.gd" id="1_vasa2"]
+[ext_resource type="AudioStream" uid="uid://b0fhfpv3y5e5y" path="res://Ninja Adventure - Asset Pack/Audio/Sounds/Bonus/Bonus.wav" id="3_h7iqs"]
+
+[node name="Game" type="Node2D" unique_id=1945105279]
+process_mode = 3
+script = ExtResource("1_vasa2")
+
+[node name="OverWorld" parent="." unique_id=1645941047 instance=ExtResource("1_l1rk1")]
+unique_name_in_owner = true
+process_mode = 1
+
+[node name="BattleStartSound" type="AudioStreamPlayer" parent="." unique_id=1155609766]
+unique_name_in_owner = true
+process_mode = 2
+stream = ExtResource("3_h7iqs")

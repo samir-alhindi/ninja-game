@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cb3474ae6wcck"]
+
+[ext_resource type="Script" uid="uid://qa81bx3qbhu7" path="res://battle/battle.gd" id="1_4mnim"]
+[ext_resource type="PackedScene" uid="uid://l44h5nb2ub5t" path="res://player_battler/player_battler.tscn" id="1_mqutd"]
+[ext_resource type="Resource" uid="uid://1kgr5f5teeiq" path="res://battler_data/ninja_data.tres" id="2_tiqy5"]
+[ext_resource type="PackedScene" uid="uid://b2i8v282cle12" path="res://enemy_battler/enemy_battler.tscn" id="3_qubjc"]
+[ext_resource type="AudioStream" uid="uid://dmch3xkehyxdc" path="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/button.wav" id="7_7fucf"]
+
+[node name="Battle" type="Node2D" unique_id=697061231]
+process_mode = 2
+script = ExtResource("1_4mnim")
+
+[node name="Battlers" type="Node2D" parent="." unique_id=882097105]
+unique_name_in_owner = true
+
+[node name="PlayerBattler" parent="Battlers" unique_id=893298890 instance=ExtResource("1_mqutd")]
+unique_name_in_owner = true
+position = Vector2(28, 82)
+data = ExtResource("2_tiqy5")
+
+[node name="EnemyBattler" parent="Battlers" unique_id=1247135100 instance=ExtResource("3_qubjc")]
+unique_name_in_owner = true
+position = Vector2(288, 88)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1810498988]
+
+[node name="TextBox" type="ColorRect" parent="UI" unique_id=1703669749]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.194
+offset_bottom = 0.07999802
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BattleText" type="Label" parent="UI/TextBox" unique_id=1556239405]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "battle text goes here !"
+
+[node name="DisplayTextSound" type="AudioStreamPlayer" parent="." unique_id=1007540065]
+stream = ExtResource("7_7fucf")
+
+[node name="BattleCamera" type="Camera2D" parent="." unique_id=256184825]
+unique_name_in_owner = true
+position = Vector2(160, 90)

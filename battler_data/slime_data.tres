@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="BattlerData" format=3 uid="uid://c8op1x2s2t0ff"]
+
+[ext_resource type="Script" uid="uid://bi85lablvrto7" path="res://battler_data.gd" id="1_sw1tb"]
+[ext_resource type="Texture2D" uid="uid://dt8uhwwsl3qt3" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/Slime2.png" id="2_yjqf0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klj0v"]
+atlas = ExtResource("2_yjqf0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntudj"]
+atlas = ExtResource("2_yjqf0")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2aw"]
+atlas = ExtResource("2_yjqf0")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ir7"]
+atlas = ExtResource("2_yjqf0")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjqf0"]
+atlas = ExtResource("2_yjqf0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cu2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klj0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntudj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o2aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ir7")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjqf0")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_sw1tb")
+name = "Slime"
+max_health = 100
+speed = 20
+strength = 25
+sprite_frames = SubResource("SpriteFrames_6cu2i")
+metadata/_custom_type_script = "uid://bi85lablvrto7"

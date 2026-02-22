@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://3t6a4pm4ttpx"]
+
+[ext_resource type="AudioStream" uid="uid://kx6qluhyi2a3" path="res://SNES - The Legend of Zelda_ A Link to the Past - Miscellaneous - Sound Effects/enemy hit.wav" id="1_kj5ye"]
+
+[sub_resource type="Animation" id="Animation_1wwld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_pmsee"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.20000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1.0, 0.0, 1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f17ml"]
+_data = {
+&"RESET": SubResource("Animation_1wwld"),
+&"hurt": SubResource("Animation_pmsee")
+}
+
+[node name="Battler" type="Node2D" unique_id=893298890]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2107465465]
+unique_name_in_owner = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1773053405]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(50, 10)
+offset_left = -19.0
+offset_top = 15.0
+offset_right = 31.0
+offset_bottom = 25.0
+value = 100.0
+show_percentage = false
+
+[node name="HurtAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1772088629]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_f17ml")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1473143112]
+unique_name_in_owner = true
+stream = ExtResource("1_kj5ye")
+
+[node name="DamageLabel" type="Label" parent="." unique_id=261734383]
+unique_name_in_owner = true
+visible = false
+offset_left = -17.0
+offset_top = 32.0
+offset_right = 23.0
+offset_bottom = 55.0
+text = "100"
