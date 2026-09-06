@@ -8,6 +8,7 @@ extends Node
 	"[RIGHT]" : preload("uid://b516xopujv2mv"),
 	"[UP]" : preload("uid://0cvik7g4vy4w"),
 	"[DOWN]" : preload("uid://cupb7isnibpnc"),
+	"[QUATERNARY]" : preload("uid://jkuvqm0dn41b"),
 }
 
 class KeyboardAction:

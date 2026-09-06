@@ -136,6 +136,21 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="EndTurnLabel" type="RichTextLabel" parent="UI/MarginContainer2/InstructionsContainer" unique_id=2073743952]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/outline_size = 3
+bbcode_enabled = true
+text = "End Turn
+[QUATERNARY]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CancelLabel" type="RichTextLabel" parent="UI/MarginContainer2/InstructionsContainer" unique_id=1746570084]
 unique_name_in_owner = true
 visible = false

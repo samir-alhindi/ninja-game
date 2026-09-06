@@ -29,6 +29,7 @@ class_name Battle extends Node2D
 @onready var do_rotate_label: RichTextLabel = %DoRotateLabel
 @onready var rotation_receptacle: Receptacle = %RotationReceptacle
 @onready var rotation_data_ui: VBoxContainer = %RotationDataUI
+@onready var end_turn_label: RichTextLabel = %EndTurnLabel
 
 var battle_data: BattleData
 var allies_data: Array[AllyBattlerData]
@@ -142,6 +143,7 @@ func start() -> void:
 
 func start_ally_turn() -> void:
 	start_rotate_label.show()
+	end_turn_label.show()
 	selection_cursor.show_button_prompt()
 	for ally in allies:
 		ally.stop_guarding()
@@ -149,13 +151,14 @@ func start_ally_turn() -> void:
 	number_of_rotations_left = 6
 	rotation_receptacle.update(1.0)
 	state = States.SELECTING_ALLY
-	ally_selection_index = allies.find(has_not_played_turn[0])
+	ally_selection_index = next_ally_index()
 	update_battler_data_ui(allies[ally_selection_index])
 	EventBus.move_cursor_to.emit(allies[ally_selection_index].global_position)
 	EventBus.set_cursor_visible.emit(true)
 
 func enemy_turn() -> void:
 	start_rotate_label.hide()
+	end_turn_label.hide()
 	selection_cursor.hide_button_prompt()
 	for row in enemies_grid:
 		for enemy in row.elements:
@@ -172,23 +175,16 @@ func _on_ally_finished_turn(ally: AllyBattler) -> void:
 	await get_tree().create_timer(0.1).timeout
 	cancel_label.hide()
 	start_rotate_label.show()
+	end_turn_label.show()
 	if is_battle_finished():
 		finish_battle()
 		return
-	if has_not_played_turn.size() == 1:
-		for a in allies:
-			a.played_turn = false
-			if a.is_alive:
-				a.animated_sprite_2d.modulate.a = 1.0
-		await get_tree().create_timer(0.1).timeout
-		enemy_turn()
-	else:
-		has_not_played_turn.erase(ally)
-		state = States.SELECTING_ALLY
-		ally_selection_index = allies.find(has_not_played_turn[0])
-		EventBus.set_cursor_visible.emit(true)
-		update_battler_data_ui(allies[ally_selection_index])
-		EventBus.move_cursor_to.emit(allies[ally_selection_index].global_position)
+	has_not_played_turn.erase(ally)
+	state = States.SELECTING_ALLY
+	ally_selection_index = next_ally_index()
+	EventBus.set_cursor_visible.emit(true)
+	update_battler_data_ui(allies[ally_selection_index])
+	EventBus.move_cursor_to.emit(allies[ally_selection_index].global_position)
 
 func _input(event: InputEvent) -> void:
 	
@@ -217,16 +213,6 @@ func _input(event: InputEvent) -> void:
 			button_prompt_confirm.show()
 			battle_text.visible_ratio = 1.0
 	
-	elif event.is_action_pressed("tertiary action") and state == States.SELECTING_ALLY:
-		battler_data_ui.hide()
-		start_rotate_label.hide()
-		do_rotate_label.show()
-		cancel_label.show()
-		rotation_data_ui.show()
-		rotation_count_label.text = "RP %d/6" % number_of_rotations_left
-		state = States.CHOOSING_ROTATION
-		EventBus.set_cursor_visible.emit(false)
-	
 	elif state == States.SELECTING_ALLY:
 		if EventBus.is_cursor_moving:
 			return
@@ -252,9 +238,31 @@ func _input(event: InputEvent) -> void:
 				return
 			state = States.BATTLER_PLAYING_TURNS
 			start_rotate_label.hide()
+			end_turn_label.hide()
+			
 			cancel_label.show()
 			await get_tree().create_timer(0.1).timeout
 			ally.play_turn()
+		
+		elif event.is_action_pressed("tertiary action"):
+			battler_data_ui.hide()
+			start_rotate_label.hide()
+			end_turn_label.hide()
+			do_rotate_label.show()
+			cancel_label.show()
+			rotation_data_ui.show()
+			rotation_count_label.text = "RP %d/6" % number_of_rotations_left
+			state = States.CHOOSING_ROTATION
+			EventBus.set_cursor_visible.emit(false)
+		
+		elif event.is_action_pressed("quaternary action"):
+			for a in allies:
+				a.played_turn = false
+				if a.is_alive:
+					a.animated_sprite_2d.modulate.a = 1.0
+			await get_tree().create_timer(0.1).timeout
+			state = States.BATTLER_PLAYING_TURNS
+			enemy_turn()
 	
 	elif state == States.CHOOSING_ROTATION:
 		var dir: int
@@ -284,6 +292,7 @@ func _input(event: InputEvent) -> void:
 			do_rotate_label.hide()
 			cancel_label.hide()
 			start_rotate_label.show()
+			end_turn_label.show()
 			rotation_data_ui.hide()
 			state = States.SELECTING_ALLY
 			EventBus.set_cursor_visible.emit(true)
@@ -353,6 +362,7 @@ func _on_rotation_timer_timeout() -> void:
 func cancel_ally_turn() -> void:
 	state = States.SELECTING_ALLY
 	start_rotate_label.show()
+	end_turn_label.show()
 	cancel_label.hide()
 
 func give_extra_turn(ally: AllyBattler) -> void:
@@ -383,3 +393,8 @@ func _on_input_mode_changed() -> void:
 
 func _on_ally_started_turn() -> void:
 	cancel_label.hide()
+
+func next_ally_index() -> int:
+	if len(has_not_played_turn) > 0:
+		return allies.find(has_not_played_turn[0])
+	return 0

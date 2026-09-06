@@ -14,3 +14,6 @@ res://battler/battler.gd
 res://battle/battle.gd
 res://ally_battler/ally_battler.tscn
 res://ally_battler/ally_battler.gd
+res://button_icon_data/quaternary_action.tres
+res://singletons/my_input.gd
+res://keyboard_mode_screen/keyboard_mode_screen.tscn

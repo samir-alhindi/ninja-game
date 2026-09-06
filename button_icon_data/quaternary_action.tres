@@ -1,10 +1,126 @@
 [gd_resource type="Resource" script_class="ButtonIconData" format=3 uid="uid://jkuvqm0dn41b"]
 
 [ext_resource type="Script" uid="uid://c7jpg3rf7yv4f" path="res://button_icon_data/button_icon_data.gd" id="1_j8hag"]
+[ext_resource type="Texture2D" uid="uid://dfeqtg405u87d" path="res://ui/Controllers and Keyboard/kb_dark_all.png" id="1_o0sa0"]
+[ext_resource type="Texture2D" uid="uid://cdntbed5sbgcn" path="res://ui/Controllers and Keyboard/controller_switch.png" id="2_aga3o"]
+[ext_resource type="Texture2D" uid="uid://3022k8agpg1x" path="res://ui/Controllers and Keyboard/controller_ps.png" id="3_jpwif"]
+[ext_resource type="Texture2D" uid="uid://3plyis5x853n" path="res://ui/Controllers and Keyboard/controller_xbox.png" id="5_1n4vg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0sa0"]
+atlas = ExtResource("1_o0sa0")
+region = Rect2(144, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n4vg"]
+atlas = ExtResource("1_o0sa0")
+region = Rect2(176, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8qc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0sa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n4vg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8qc7"]
+atlas = ExtResource("2_aga3o")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6guvs"]
+atlas = ExtResource("2_aga3o")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pijv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8qc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6guvs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pijv"]
+atlas = ExtResource("3_jpwif")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8yj0"]
+atlas = ExtResource("3_jpwif")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2yy58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pijv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8yj0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aga3o"]
+atlas = ExtResource("1_o0sa0")
+region = Rect2(16, 336, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpwif"]
+atlas = ExtResource("1_o0sa0")
+region = Rect2(48, 336, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8hag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aga3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpwif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yy58"]
+atlas = ExtResource("5_1n4vg")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji2ux"]
+atlas = ExtResource("5_1n4vg")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lwhi6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yy58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji2ux")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_j8hag")
 retro_keyboard_sprite_frames = SubResource("SpriteFrames_j8hag")
+modern_keyboard_sprite_frames = SubResource("SpriteFrames_a8qc7")
+nintendo_sprite_frames = SubResource("SpriteFrames_2pijv")
+playstation_sprite_frames = SubResource("SpriteFrames_2yy58")
+xbox_sprite_frames = SubResource("SpriteFrames_lwhi6")
 metadata/_custom_type_script = "uid://c7jpg3rf7yv4f"
