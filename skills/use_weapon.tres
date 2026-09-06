@@ -10,7 +10,6 @@ script = ExtResource("4_2ry30")
 name = "Use Weapon"
 icon = ExtResource("2_c3c2k")
 disabled_icon = ExtResource("1_k51tp")
-battle_text = "%s attacked the enemy with their weapon"
 quick_time_event = ExtResource("3_t2ohe")
 constraints = Array[int]([0])
 metadata/_custom_type_script = "uid://bycf0afmvv35g"

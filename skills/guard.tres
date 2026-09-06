@@ -10,7 +10,6 @@ script = ExtResource("1_fwo43")
 name = "Guard"
 icon = ExtResource("2_60int")
 disabled_icon = ExtResource("1_80nlb")
-battle_text = "%s is Guarding"
 selection_type = 4
 quick_time_event = ExtResource("3_60int")
 metadata/_custom_type_script = "uid://bycf0afmvv35g"

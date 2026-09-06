@@ -59,4 +59,5 @@ func finish() -> void:
 		InputMap.action_erase_event("ui_accept", event)
 	MyInput.update_keyboard_controls()
 	MyInput.input_mode_changed.emit()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 	get_tree().change_scene_to_file("uid://ffwpq180qldq")

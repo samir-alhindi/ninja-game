@@ -21,9 +21,9 @@ func play_turn() -> void:
 			i -= 1
 		var ally := living_allies[rng.rand_weighted(weights)]
 		
-		var args := [battler_name, ally.get_colored_name()]
-		EventBus.display_text.emit("%s attacked %s" % args)
-		await EventBus.textbox_closed
+		#var args := [battler_name, ally.get_colored_name()]
+		#EventBus.display_text.emit("%s attacked %s" % args)
+		#await EventBus.textbox_closed
 		EventBus.set_cursor_visible.emit(false)
 		health_bar.hide()
 		_starting_pos = self.global_position

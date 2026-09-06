@@ -170,8 +170,9 @@ func perform_action() -> void:
 	hide_stat_bars()
 	_starting_pos = self.global_position
 	_magic_points -= _skill_to_perform.magic_points_cost
-	EventBus.display_text.emit(_skill_to_perform.battle_text % get_colored_name())
-	await EventBus.textbox_closed
+	#if _skill_to_perform.battle_text:
+		#EventBus.display_text.emit(_skill_to_perform.battle_text % get_colored_name())
+		#await EventBus.textbox_closed
 	var qte: QuickTimeEvent
 	qte = _skill_to_perform.quick_time_event.instantiate()
 	add_child(qte)

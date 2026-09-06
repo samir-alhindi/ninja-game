@@ -54,10 +54,6 @@ enum KeyboardMode {
 var current_input_mode := InputMode.KEYBOARD
 var current_keyboard_mode := KeyboardMode.RETRO
 
-func _ready() -> void:
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	pass
-
 func get_sprite_frames(button_icon_data: ButtonIconData) -> SpriteFrames:
 	match current_input_mode:
 		InputMode.KEYBOARD:
