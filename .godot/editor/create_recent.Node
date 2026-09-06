@@ -1,9 +1,9 @@
+RichTextLabel
 AudioStreamPlayer
 Control
 Button
 HBoxContainer
 GridContainer
-RichTextLabel
 VBoxContainer
 ColorRect
 MarginContainer
@@ -12,4 +12,3 @@ Node2D
 Label
 Node
 AnimatedSprite2D
-Timer

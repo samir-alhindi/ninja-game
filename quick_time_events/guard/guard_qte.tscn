@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2gaig6n55ely"]
 
 [ext_resource type="PackedScene" uid="uid://bg7icjoeyog5g" path="res://quick_time_events/base_class/quick_time_event.tscn" id="1_4g6dn"]
-[ext_resource type="Script" uid="uid://gauokoj2kp2q" path="res://guard_qte.gd" id="2_mywx4"]
+[ext_resource type="Script" uid="uid://gauokoj2kp2q" path="res://quick_time_events/guard/guard_qte.gd" id="2_mywx4"]
 
 [node name="GuardQTE" unique_id=1593403207 instance=ExtResource("1_4g6dn")]
 script = ExtResource("2_mywx4")

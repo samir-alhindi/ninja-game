@@ -6,14 +6,13 @@ signal finished_increasing_xp
 
 @onready var ui: CanvasLayer = $UI
 @onready var skill_animation: AnimatedSprite2D = %SkillAnimation
-@onready var buttons: HBoxContainer = %Buttons
 @onready var skills_menu: NinePatchRect = %SkillsMenu
 @onready var skills_container: GridContainer = %SkillsContainer
-@onready var view_skill_list_button: Button = %ViewSkillListButton
 @onready var weapon_sprite: Sprite2D = %WeaponSprite
 @onready var error_sound: AudioStreamPlayer = %ErrorSound
 @onready var experience_bar: TextureProgressBar = %ExperienceBar
 @onready var scroll_container: ScrollContainer = %ScrollContainer
+@onready var level_up_sound: AudioStreamPlayer = %LevelUpSound
 
 enum {
 	RIGHT, DOWN, LEFT, UP
@@ -186,8 +185,6 @@ func perform_action() -> void:
 
 func _process(delta: float) -> void:
 	
-	%DebugLabel.text = str(_defense)
-	
 	if skills_menu.visible and Input.is_action_just_pressed("secondary action"):
 		skills_menu.hide()
 		cancel_my_turn.emit()
@@ -280,7 +277,6 @@ func _on_view_skill_list_button_pressed() -> void:
 		%ErrorSound.play()
 		return
 	action_to_perform = ActionType.SKILL
-	buttons.hide()
 	skills_menu.show()
 	focus_on_first_skill_button()
 
@@ -324,8 +320,8 @@ func increase_exp(amount: int) -> void:
 
 func level_up() -> void:
 	for i in levels_gained:
+		level_up_sound.play()
 		_data.level += 1
-		%LevelUpSound.play()
 		var args := [get_colored_name(), _data.level]
 		EventBus.display_text.emit("%s reached level %d" % args)
 		await EventBus.textbox_closed

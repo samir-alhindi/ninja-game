@@ -35,6 +35,7 @@ var keyboard_actions: Array[KeyboardAction] = [
 	KeyboardAction.new("ui_up", KEY_UP, KEY_W),
 	KeyboardAction.new("ui_down", KEY_DOWN, KEY_S),
 	KeyboardAction.new("ui_accept", KEY_Z, KEY_E),
+	KeyboardAction.new("quaternary action", KEY_V, KEY_SPACE),
 ]
 
 signal input_mode_changed

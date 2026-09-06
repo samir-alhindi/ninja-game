@@ -1,4 +1,4 @@
-res://keyboard_mode_screen/keyboard_mode_screen.tscn
+res://quick_time_events/guard/guard_qte.tscn
 res://ui/main_theme.tres
 res://button_icon_data/primary_action.tres
 res://button_icon_data/secondary_action.tres
@@ -9,4 +9,8 @@ res://button_icon_data/move_up.tres
 res://button_icon_data/move_down.tres
 res://ui/receptacle_shader.gdshader
 res://ui/transition_shader.gdshader
+res://battle/battle.tscn
+res://battler/battler.gd
+res://battle/battle.gd
+res://ally_battler/ally_battler.tscn
 res://ally_battler/ally_battler.gd

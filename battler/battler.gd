@@ -148,12 +148,14 @@ func stop_selection_animation() -> void:
 	selection_arrow.hide()
 	selection_arrow_animation_player.stop()
 
-func move_to(pos: Vector2) -> void:
-	play_moving_animation()
+func move_to(pos: Vector2, play_animation:=true) -> void:
+	if play_animation:
+		play_moving_animation()
 	var tween := create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", pos, movement_speed)
 	await tween.finished
-	stop_moving_animation()
+	if play_animation:
+		stop_moving_animation()
 
 func has_full_health() -> bool:
 	return _health == _max_health

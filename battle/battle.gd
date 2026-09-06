@@ -272,7 +272,7 @@ func _input(event: InputEvent) -> void:
 			rotation_receptacle.update(float(number_of_rotations_left) / 6)
 			rotation_timer.start(allies[0].movement_speed)
 			for i in range(allies.size()):
-				allies[i].move_to(allies[(i+dir) % allies.size()].global_position)
+				allies[i].move_to(allies[(i+dir) % allies.size()].global_position, false)
 			if dir == 1:
 				var last: AllyBattler = allies.pop_back()
 				allies.push_front(last)

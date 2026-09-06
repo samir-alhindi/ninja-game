@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ButtonIconData" format=3 uid="uid://jkuvqm0dn41b"]
+
+[ext_resource type="Script" uid="uid://c7jpg3rf7yv4f" path="res://button_icon_data/button_icon_data.gd" id="1_j8hag"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8hag"]
+
+[resource]
+script = ExtResource("1_j8hag")
+retro_keyboard_sprite_frames = SubResource("SpriteFrames_j8hag")
+metadata/_custom_type_script = "uid://c7jpg3rf7yv4f"
